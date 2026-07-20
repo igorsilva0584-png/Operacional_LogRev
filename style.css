@@ -10,3 +10,19 @@
 .table-wrap tbody tr:nth-child(even){background:#142a45}
 .table-wrap tbody tr:hover{background:#1a385a}
 .table-wrap th:first-child,.table-wrap td:first-child{width:26%}
+
+/* Ajuste 8: previsao do dia e retirada da faixa dos cards */
+.stock-card .mini{display:none!important}
+.forecast-view{height:465px;display:grid;place-items:stretch}
+.forecast-wrap{height:100%;overflow:hidden;border:1px solid var(--line);border-radius:11px;background:#0d1b2d}
+.forecast-wrap table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:16px}
+.forecast-wrap thead{background:#17395f;color:#dcecff}
+.forecast-wrap th,.forecast-wrap td{padding:12px 18px;border-bottom:1px solid #203954}
+.forecast-wrap th:first-child,.forecast-wrap td:first-child{text-align:left;width:72%}
+.forecast-wrap th:last-child,.forecast-wrap td:last-child{text-align:center;width:28%}
+.forecast-wrap tbody tr:nth-child(odd){background:#102038}
+.forecast-wrap tbody tr:nth-child(even){background:#142a45}
+.forecast-wrap tbody tr:hover{background:#1a385a}
+.forecast-empty{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted);text-align:center}
+.forecast-empty strong{font-size:25px;color:#dcecff}
+.forecast-empty span{font-size:16px;color:var(--cyan)}
