@@ -48,3 +48,8 @@
 /* Ajuste 10: legendas coerentes e previsão apenas por armazém */
 .forecast-wrap th:first-child,.forecast-wrap td:first-child{width:100%;text-align:left}
 .forecast-wrap th:last-child,.forecast-wrap td:last-child{width:auto;text-align:left}
+
+/* Ajuste 11: Baixados e Internalizados exibem somente volume */
+.seg-volume{min-width:22px!important}
+.seg-volume b{font-size:11px;font-weight:900;color:#fff;line-height:1;text-shadow:0 1px 2px rgba(0,0,0,.9)}
+.seg-volume em{display:none}
