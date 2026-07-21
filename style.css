@@ -26,3 +26,21 @@
 .forecast-empty{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted);text-align:center}
 .forecast-empty strong{font-size:25px;color:#dcecff}
 .forecast-empty span{font-size:16px;color:var(--cyan)}
+
+/* Ajuste 9: painel executivo de metas terceiras */
+.metas-container{height:465px;overflow:hidden}
+.metas-view{height:100%;display:grid;grid-template-rows:74px 24px 1fr;gap:8px}
+.meta-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.meta-kpis article{padding:10px 14px;border:1px solid #2b5279;border-radius:10px;background:linear-gradient(145deg,#17395f,#102740);border-left:4px solid #21c7df}
+.meta-kpis article:nth-child(2){border-left-color:#8f63ed}.meta-kpis article:nth-child(3){border-left-color:#24c875}.meta-kpis article:nth-child(4){border-left-color:#f2b94b}
+.meta-kpis span{display:block;color:#9db2ca;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.meta-kpis strong{display:block;margin-top:3px;font-size:25px;color:#fff}
+.meta-page-head{display:flex;justify-content:space-between;align-items:center;color:#91a8c4;font-size:11px;padding:0 4px}
+.meta-page-head b{color:#dcecff}
+.meta-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr));gap:7px;min-height:0}
+.meta-row{min-width:0;display:grid;grid-template-columns:28px 1fr;gap:8px;padding:8px 10px;border:1px solid #294866;border-radius:10px;background:linear-gradient(145deg,#11243b,#0c192a)}
+.meta-rank{width:24px;height:24px;display:grid;place-items:center;border-radius:50%;background:#183d64;color:#9dd8ff;font-size:11px;font-weight:900}
+.meta-content{min-width:0}.meta-title{display:flex;justify-content:space-between;gap:8px;align-items:center}.meta-title>strong{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.owner{padding:3px 7px;border-radius:10px;background:#283553;color:#d8dfff;font-size:9px;font-weight:800;white-space:nowrap}
+.meta-progress{position:relative;height:17px;margin:5px 0;background:#071321;border-radius:5px;overflow:hidden}.meta-progress i{display:block;height:100%;border-radius:5px}.meta-progress b{position:absolute;inset:0;display:grid;place-items:center;font-size:10px;color:#fff;text-shadow:0 1px 2px #000}
+.meta-details{display:flex;gap:9px;overflow:hidden;color:#91a8c4;font-size:9px;white-space:nowrap}.meta-details b{color:#fff;font-size:9px}
+@media(max-width:1200px){.meta-list{grid-template-columns:1fr;grid-template-rows:repeat(8,minmax(0,1fr))}.meta-details{gap:5px}.meta-row{padding:5px 8px}}
