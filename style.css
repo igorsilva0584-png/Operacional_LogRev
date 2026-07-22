@@ -115,3 +115,46 @@
 
 /* Ajuste 15: leitura dos cards diarios */
 .kpis article small{font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* Ajuste 16: grupos por status e visão de metas em largura total */
+.grid.full-view{grid-template-columns:minmax(0,1fr)}
+.grid.full-view .panel.main{width:100%;max-width:none}
+.grid.full-view .metas-container{width:100%}
+#ticker.highlight-ticker .highlight-message>span{font-size:13px;letter-spacing:.01em}
+
+/* Ajuste 17: logomarca Alares no cabeçalho */
+.brand-block{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  min-width:350px;
+}
+.alares-logo{
+  display:block;
+  width:158px;
+  height:auto;
+  max-height:54px;
+  object-fit:contain;
+  flex:0 0 auto;
+}
+.brand-text{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-width:0;
+}
+.brand-text small{
+  margin:0 0 2px;
+}
+.brand-text h1{
+  margin:0;
+}
+@media(max-width:1100px){
+  .brand-block{min-width:250px;gap:12px}
+  .alares-logo{width:120px;max-height:44px}
+}
+@media(max-width:700px){
+  .alares-logo{width:95px;max-height:36px}
+  .brand-text small{display:none}
+  .brand-text h1{font-size:18px}
+}
