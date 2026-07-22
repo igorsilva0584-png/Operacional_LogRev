@@ -100,3 +100,18 @@
   0%{transform:translateX(100vw)}
   100%{transform:translateX(-100%)}
 }
+
+/* Ajuste 14: velocidade mais confortável e subtítulos dos cards diários */
+#ticker.highlight-ticker .highlight-message{
+  animation-duration:10s!important;
+}
+@keyframes highlightMarquee{
+  0%{transform:translateX(100vw)}
+  15%{transform:translateX(72vw)}
+  85%{transform:translateX(-72%)}
+  100%{transform:translateX(-100%)}
+}
+.kpis article small{line-height:1.2;min-height:13px}
+
+/* Ajuste 15: leitura dos cards diarios */
+.kpis article small{font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
