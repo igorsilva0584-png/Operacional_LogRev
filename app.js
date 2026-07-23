@@ -35,10 +35,10 @@ function buildHighlights(){
     label:g.label,
     color:g.color,
     className:g.className,
-    text:g.rows.map(r=>`${norm(r.UF)} · ${norm(r.Agente)} ${r.ritmo.toFixed(1).replace(".",",")}%`).join("   •   ")
+    html:g.rows.map(r=>`<span class="highlight-agent"><small>${norm(r.UF)}</small><span>${norm(r.Agente)}</span><strong>${r.ritmo.toFixed(1).replace(".",",")}%</strong></span>`).join('<i class="highlight-separator"></i>')
   }));
 }
-function showHighlight(){const items=buildHighlights(),ticker=$("ticker");if(!ticker)return;if(!items.length){ticker.innerHTML='<span class="highlight-message"><b>METAS TERCEIRAS</b><span>Sem dados de performance disponíveis</span></span>';return}const item=items[S.highlightIndex%items.length];ticker.className=`highlight-ticker ${item.className}`;ticker.innerHTML=`<span class="highlight-message"><i style="background:${item.color}"></i><b>${item.label}</b><span>${item.text}</span></span>`;S.highlightIndex=(S.highlightIndex+1)%items.length}
+function showHighlight(){const items=buildHighlights(),ticker=$("ticker");if(!ticker)return;if(!items.length){ticker.innerHTML='<span class="highlight-message"><b class="highlight-status">METAS TERCEIRAS</b><span>Sem dados de performance disponíveis</span></span>';return}const item=items[S.highlightIndex%items.length];ticker.className=`highlight-ticker ${item.className}`;ticker.innerHTML=`<span class="highlight-message"><b class="highlight-status"><i style="background:${item.color}"></i>${item.label}</b><span class="highlight-agents">${item.html}</span></span>`;S.highlightIndex=(S.highlightIndex+1)%items.length}
 function startHighlights(){showHighlight();setInterval(showHighlight,25000)}
 function forecastTable(rows){if(!rows.length)return`<div class="forecast-empty"><strong>Nenhuma entrega prevista para hoje</strong><span>${show(new Date())}</span></div>`;return`<div class="forecast-wrap"><table><thead><tr><th>Armazém / Equipe</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${norm(r.Equipe)||"Sem informação"}</td></tr>`).join("")}</tbody></table></div>`}
 function stockSwitch(){return`<div class="stock-switch"><button class="${S.stockView==='terceiras'?'active':''}" data-stock="terceiras">Terceiras</button><button class="${S.stockView==='lojas'?'active':''}" data-stock="lojas">Lojas por UF</button></div>`}
