@@ -162,3 +162,8 @@
 /* Ajuste 18: destaques mais lentos e horario real da ultima alteracao */
 #ticker.highlight-ticker .highlight-message{animation-duration:15s!important}
 .status.ok{white-space:nowrap;min-width:126px;text-align:center}
+
+/* Ajuste 19: destaques em velocidade mais lenta */
+#ticker.highlight-ticker .highlight-message{
+  animation-duration:25s!important;
+}
