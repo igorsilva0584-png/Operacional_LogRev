@@ -339,3 +339,277 @@ nav .view-timer{
 @media(max-width:1050px){
   nav .view-timer{width:135px}
 }
+
+/* Ajuste 22: responsividade completa para celulares e tablets */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{min-width:0}
+img{max-width:100%}
+
+@media(max-width:900px){
+  body{padding-bottom:0;overflow-x:hidden}
+
+  header{
+    height:auto;
+    min-height:78px;
+    padding:12px 14px;
+    gap:12px;
+    align-items:flex-start;
+    flex-wrap:wrap;
+  }
+  .brand-block{
+    width:100%;
+    min-width:0;
+    gap:12px;
+  }
+  .alares-logo{
+    width:112px;
+    max-height:42px;
+  }
+  .brand-text h1{font-size:20px;line-height:1.08}
+  .brand-text small{font-size:9px}
+  .headinfo{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    align-items:stretch;
+  }
+  .headinfo>span,
+  .headinfo>.status{
+    min-width:0;
+    padding:8px 10px;
+    border:1px solid rgba(50,84,120,.55);
+    border-radius:9px;
+    background:#0c192a;
+  }
+  .headinfo span{font-size:9px}
+  .headinfo strong{font-size:11px;white-space:nowrap}
+  .status.ok{min-width:0;display:grid;place-items:center;font-size:10px}
+
+  main{padding:12px 10px 18px}
+  .kpis{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+  }
+  .kpis article{
+    min-width:0;
+    padding:11px 12px;
+    border-radius:10px;
+  }
+  .kpis article:nth-child(3){grid-column:1/-1}
+  .kpis strong{font-size:26px;margin:4px 0}
+  .kpis span,.kpis small{font-size:9px}
+
+  nav{
+    position:relative;
+    margin:12px 0;
+    padding-bottom:48px;
+    gap:6px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  nav::-webkit-scrollbar{display:none}
+  nav button{
+    flex:0 0 auto;
+    padding:8px 11px;
+    font-size:11px;
+    white-space:nowrap;
+  }
+  nav .view-timer{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:2px;
+    width:100%;
+    margin:0;
+  }
+
+  .grid,
+  .grid.full-view{
+    grid-template-columns:minmax(0,1fr);
+    gap:10px;
+  }
+  .grid aside{display:block!important}
+  .grid.full-view aside{display:none!important}
+  .panel{
+    min-width:0;
+    min-height:0;
+    padding:12px;
+    border-radius:12px;
+  }
+  .ptitle{
+    gap:8px;
+    align-items:flex-start;
+    flex-wrap:wrap;
+  }
+  .ptitle h2{font-size:17px;line-height:1.15}
+  .legend{
+    width:100%;
+    gap:9px;
+    flex-wrap:wrap;
+    font-size:9px;
+  }
+
+  .bar-chart{
+    height:auto;
+    min-height:0;
+    max-height:none;
+    gap:7px;
+    overflow:visible;
+  }
+  .bar-row{
+    grid-template-columns:minmax(82px,27%) minmax(120px,1fr) 46px;
+    gap:6px;
+    min-height:30px;
+  }
+  .blabel{font-size:10px}
+  .btrack{height:22px}
+  .bar-row>strong{font-size:11px;text-align:right}
+  .seg-volume b{font-size:9px}
+
+  .composition{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:12px}
+  .comp{padding:9px}
+  .comp>span{font-size:9px;gap:4px;flex-direction:column}
+  .comp b{font-size:14px}
+  .total,.top{margin-top:10px;padding:11px}
+  .total strong{font-size:24px}
+
+  .metas-container,
+  .forecast-view,
+  .pending-view,
+  .stock-area{
+    height:auto;
+    min-height:0;
+  }
+  .metas-view{
+    height:auto;
+    grid-template-rows:auto auto auto;
+  }
+  .meta-kpis{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:7px;
+  }
+  .meta-kpis article{padding:9px 10px}
+  .meta-kpis strong{font-size:20px}
+  .meta-kpis span{font-size:9px}
+  .meta-page-head{font-size:9px}
+  .meta-list{
+    grid-template-columns:minmax(0,1fr);
+    grid-template-rows:none;
+    gap:7px;
+    overflow:visible;
+  }
+  .meta-row{
+    min-height:88px;
+    padding:8px;
+  }
+  .meta-title>strong{font-size:11px}
+  .meta-details{
+    gap:7px;
+    flex-wrap:wrap;
+    white-space:normal;
+    overflow:visible;
+  }
+
+  .stock-area{overflow:visible}
+  .stock-switch{height:auto;flex-wrap:wrap}
+  .third-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-rows:none;
+    gap:7px;
+    overflow:visible;
+  }
+  .stock-card:first-child{grid-column:auto}
+  .stock-card{min-height:112px}
+  .stock-head strong{font-size:19px}
+  .stock-details{font-size:10px}
+  .stock-details b{font-size:10px}
+
+  .table-wrap,
+  .forecast-wrap{
+    height:auto;
+    max-width:100%;
+    overflow-x:auto;
+    overflow-y:visible;
+    -webkit-overflow-scrolling:touch;
+  }
+  .table-wrap table{min-width:570px;height:auto;font-size:11px}
+  .forecast-wrap table{min-width:0;font-size:13px}
+  .forecast-wrap th,.forecast-wrap td{padding:10px 12px}
+  .forecast-empty{min-height:260px}
+  .forecast-empty strong{font-size:20px}
+
+  footer{
+    position:relative;
+    left:auto;
+    right:auto;
+    bottom:auto;
+    height:auto;
+    min-height:108px;
+    grid-template-columns:92px 1fr;
+    grid-template-rows:58px 42px;
+  }
+  footer>b{grid-column:1;grid-row:1;height:58px;font-size:9px}
+  footer>div{grid-column:2;grid-row:1;height:58px}
+  footer>span{
+    grid-column:1/-1;
+    grid-row:2;
+    height:42px;
+    display:grid;
+    place-items:center;
+    border-left:0;
+    border-top:1px solid #223d58;
+    font-size:12px;
+  }
+  #ticker.highlight-ticker{height:58px}
+  #ticker.highlight-ticker .highlight-message{
+    height:58px;
+    padding:0 20px;
+    gap:12px;
+  }
+  .highlight-status{padding:5px 9px;font-size:9px!important}
+  .highlight-agent{height:28px;padding:0 9px;font-size:10px}
+  .highlight-agent small{font-size:8px}
+  .highlight-agent strong{font-size:10px}
+}
+
+@media(max-width:520px){
+  header{padding:10px}
+  .alares-logo{width:96px;max-height:36px}
+  .brand-text h1{font-size:18px}
+  .headinfo{grid-template-columns:1fr}
+
+  main{padding:10px 8px 16px}
+  .kpis{grid-template-columns:1fr}
+  .kpis article:nth-child(3){grid-column:auto}
+  .kpis strong{font-size:28px}
+
+  nav button{font-size:10px;padding:8px 10px}
+  .panel{padding:10px}
+  .bar-row{
+    grid-template-columns:minmax(74px,26%) minmax(105px,1fr) 40px;
+    gap:5px;
+  }
+  .blabel{font-size:9px}
+  .composition{grid-template-columns:1fr}
+  .comp>span{flex-direction:row}
+
+  .meta-kpis{grid-template-columns:1fr 1fr}
+  .third-grid{grid-template-columns:1fr}
+  .stock-card{min-height:104px}
+
+  footer{grid-template-columns:78px 1fr}
+  #ticker.highlight-ticker .highlight-message{padding:0 14px}
+}
+
+@media(orientation:landscape) and (max-height:520px){
+  header{padding-top:8px;padding-bottom:8px}
+  .brand-block{width:auto;flex:1}
+  .headinfo{width:auto;grid-template-columns:repeat(2,minmax(120px,1fr))}
+  .kpis{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .kpis article:nth-child(3){grid-column:auto}
+  nav{padding-bottom:0}
+  nav .view-timer{position:static;width:150px;margin-left:auto}
+}
