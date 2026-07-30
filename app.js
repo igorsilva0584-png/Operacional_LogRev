@@ -27,19 +27,20 @@ function buildHighlights(){
   const rows=performanceRows();
   if(!rows.length)return[];
   const groups=[
-    {label:"BOM RITMO",color:"#24c875",className:"good",rows:rows.filter(r=>r.ritmo>=80)},
-    {label:"ATENÇÃO",color:"#f2b94b",className:"warning",rows:rows.filter(r=>r.ritmo>=60&&r.ritmo<80)},
-    {label:"PRIORIDADE",color:"#f15357",className:"critical",rows:rows.filter(r=>r.ritmo<60)}
+    {label:"BOM RITMO",color:"#24c875",className:"good",duration:40,rows:rows.filter(r=>r.ritmo>=80)},
+    {label:"ATENÇÃO",color:"#f2b94b",className:"warning",duration:25,rows:rows.filter(r=>r.ritmo>=60&&r.ritmo<80)},
+    {label:"PRIORIDADE",color:"#f15357",className:"critical",duration:25,rows:rows.filter(r=>r.ritmo<60)}
   ];
   return groups.filter(g=>g.rows.length).map(g=>({
     label:g.label,
     color:g.color,
     className:g.className,
+    duration:g.duration,
     html:g.rows.map(r=>`<span class="highlight-agent"><small>${norm(r.UF)}</small><span>${norm(r.Agente)}</span><strong>${r.ritmo.toFixed(1).replace(".",",")}%</strong></span>`).join('<i class="highlight-separator"></i>')
   }));
 }
-function showHighlight(){const items=buildHighlights(),ticker=$("ticker");if(!ticker)return;if(!items.length){ticker.innerHTML='<span class="highlight-message"><b class="highlight-status">METAS TERCEIRAS</b><span>Sem dados de performance disponíveis</span></span>';return}const item=items[S.highlightIndex%items.length];ticker.className=`highlight-ticker ${item.className}`;ticker.innerHTML=`<span class="highlight-message"><b class="highlight-status"><i style="background:${item.color}"></i>${item.label}</b><span class="highlight-agents">${item.html}</span></span>`;S.highlightIndex=(S.highlightIndex+1)%items.length}
-function startHighlights(){showHighlight();setInterval(showHighlight,25000)}
+function showHighlight(){const items=buildHighlights(),ticker=$("ticker");if(!ticker)return 25;if(!items.length){ticker.innerHTML='<span class="highlight-message"><b class="highlight-status">METAS TERCEIRAS</b><span>Sem dados de performance disponíveis</span></span>';return 25}const item=items[S.highlightIndex%items.length];ticker.className=`highlight-ticker ${item.className}`;ticker.style.setProperty("--highlight-duration",`${item.duration}s`);ticker.innerHTML=`<span class="highlight-message"><b class="highlight-status"><i style="background:${item.color}"></i>${item.label}</b><span class="highlight-agents">${item.html}</span></span>`;S.highlightIndex=(S.highlightIndex+1)%items.length;return item.duration}
+function startHighlights(){const next=()=>{const duration=showHighlight();setTimeout(next,duration*1000)};next()}
 function forecastTable(rows){if(!rows.length)return`<div class="forecast-empty"><strong>Nenhuma entrega prevista para hoje</strong><span>${show(new Date())}</span></div>`;return`<div class="forecast-wrap"><table><thead><tr><th>Armazém / Equipe</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${norm(r.Equipe)||"Sem informação"}</td></tr>`).join("")}</tbody></table></div>`}
 function stockSwitch(){return`<div class="stock-switch"><button class="${S.stockView==='terceiras'?'active':''}" data-stock="terceiras">Terceiras</button><button class="${S.stockView==='lojas'?'active':''}" data-stock="lojas">Lojas por UF</button></div>`}
 function setupResponsiveViewport(){let viewport=document.querySelector('meta[name="viewport"]');if(!viewport){viewport=document.createElement("meta");viewport.name="viewport";document.head.appendChild(viewport)}viewport.content="width=device-width, initial-scale=1, viewport-fit=cover"}

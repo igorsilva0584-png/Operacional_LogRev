@@ -613,3 +613,8 @@ img{max-width:100%}
   nav{padding-bottom:0}
   nav .view-timer{position:static;width:150px;margin-left:auto}
 }
+
+/* Ajuste 23: velocidade individual dos grupos de destaque */
+#ticker.highlight-ticker .highlight-message{
+  animation-duration:var(--highlight-duration,25s)!important;
+}
