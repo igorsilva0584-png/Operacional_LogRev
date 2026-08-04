@@ -937,3 +937,105 @@ tr.risk .rhythm-status{color:#ff8588;background:rgba(241,83,87,.14)}
   .rhythm-kpis-calendar{grid-template-columns:1fr!important}
   .rhythm-table-simple{min-width:620px!important}
 }
+
+/* Ajuste 31: tipografia maior, cards compactos e paginação manual */
+.rhythm-view{
+  grid-template-rows:22px 58px 30px minmax(0,1fr)!important;
+  gap:5px!important;
+}
+.rhythm-period{
+  font-size:11px!important;
+}
+.rhythm-period b{
+  font-size:11px!important;
+}
+.rhythm-kpis-calendar{
+  gap:7px!important;
+}
+.rhythm-kpis-calendar article{
+  min-height:58px!important;
+  padding:6px 14px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:12px!important;
+}
+.rhythm-kpis-calendar span{
+  display:block!important;
+  font-size:11px!important;
+}
+.rhythm-kpis-calendar strong{
+  display:block!important;
+  margin:0!important;
+  font-size:27px!important;
+  line-height:1!important;
+}
+.rhythm-page-head{
+  min-height:30px!important;
+  font-size:11px!important;
+}
+.rhythm-pagination{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.rhythm-pagination b{
+  min-width:72px;
+  text-align:center;
+  font-size:11px!important;
+}
+.rhythm-pagination button{
+  width:28px;
+  height:26px;
+  display:grid;
+  place-items:center;
+  padding:0;
+  border:1px solid #3c83cf;
+  border-radius:7px;
+  background:#183154;
+  color:#fff;
+  font-size:22px;
+  font-weight:900;
+  line-height:1;
+  cursor:pointer;
+}
+.rhythm-pagination button:hover:not(:disabled){
+  background:#245087;
+  border-color:#62b6ff;
+}
+.rhythm-pagination button:disabled{
+  opacity:.3;
+  cursor:default;
+}
+.rhythm-table-simple{
+  font-size:12px!important;
+}
+.rhythm-table-simple th{
+  font-size:11px!important;
+}
+.rhythm-table-simple td{
+  font-size:12px!important;
+}
+.rhythm-table-simple .rhythm-agent strong{
+  font-size:13px!important;
+}
+.rhythm-table-simple .rhythm-percent-value b{
+  font-size:12px!important;
+}
+.rhythm-table-simple .rhythm-percent-track{
+  height:5px!important;
+}
+
+@media(max-width:900px){
+  .rhythm-view{grid-template-rows:auto auto auto auto!important}
+  .rhythm-kpis-calendar{grid-template-columns:1fr!important;gap:6px!important}
+  .rhythm-kpis-calendar article{min-height:52px!important;padding:7px 12px!important}
+  .rhythm-kpis-calendar span{font-size:11px!important}
+  .rhythm-kpis-calendar strong{font-size:24px!important}
+  .rhythm-page-head{gap:8px;flex-wrap:wrap}
+  .rhythm-pagination{margin-left:auto}
+  .rhythm-pagination button{width:34px;height:32px;font-size:25px}
+  .rhythm-table-simple{min-width:640px!important;font-size:12px!important}
+  .rhythm-table-simple th{font-size:11px!important}
+  .rhythm-table-simple td{font-size:12px!important}
+}
