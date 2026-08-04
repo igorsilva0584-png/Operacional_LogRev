@@ -10,7 +10,7 @@ function viewData(){
  if(S.view==="baixados"){const d=latest(S.b,"Data_Baixa");return{tag:"BAIXADOS",title:`Volume por agente — ${show(d)}`,rows:group(S.b.filter(r=>same(r.Data_Baixa,d)),"Armazem_Agrupado"),type:"bar"}}
  if(S.view==="internalizados"){const d=latest(S.i,"Data_Internalizacao");return{tag:"INTERNALIZADOS",title:`Volume por origem — ${show(d)}`,rows:group(S.i.filter(r=>same(r.Data_Internalizacao,d)),"Armazem_Agrupado_Origem"),type:"bar"}}
  if(S.view==="metas"){const rows=S.m.map(r=>({...r,ritmo:pct(r.Ritmo),meta:n(r.Meta_Mes),previsao:n(r.Previsao_Fechamento),falta:n(r.Falta_Coletar),estoque:n(r.Estoque_Agentes),internalizado:n(r.Internalizado_Mes),baixado:n(r.Baixado_Hoje),motoqueiros:n(r.Motoqueiros)})).sort((a,b)=>a.ritmo-b.ritmo||b.falta-a.falta);return{tag:"METAS TERCEIRAS",title:"Acompanhamento de metas por agente e UF",rows,type:"metas"}};
- if(S.view==="ritmo"){const rows=ritmoRows();return{tag:"RITMO DO MÊS",title:"Ritmo proporcional aos dias úteis do mês",rows,type:"rhythm"}};
+ if(S.view==="ritmo"){const rows=ritmoRows();return{tag:"RITMO DO MÊS",title:"Ritmo atual das terceiras",rows,type:"rhythm"}};
  if(S.view==="previsao"){const hoje=new Date();hoje.setHours(0,0,0,0);const rows=S.p.filter(r=>same(r.Data_Prev,hoje)).sort((a,b)=>norm(a.Equipe).localeCompare(norm(b.Equipe),"pt-BR"));return{tag:"PREVISÃO ENTREGA",title:`Entregas previstas para hoje — ${show(hoje)}`,rows,type:"forecast"}};
  if(S.stockView==="lojas")return{tag:"ESTOQUE D-1 — LOJAS",title:"Estoque consolidado por UF",rows:group(S.e.filter(r=>r.Tipo_Armazem==="ALARES LOJA"),"UF"),type:"uf"};
  return{tag:"ESTOQUE D-1 — TERCEIRAS",title:"Estoque por terceira",rows:group(S.e.filter(r=>r.Tipo_Armazem==="TERCEIROS COLETA"),"Armazem_Exibicao"),type:"third"}
@@ -25,15 +25,22 @@ function metasView(rows){if(!rows.length)return`<div class="forecast-empty"><str
 function f1(v){return Number(v||0).toLocaleString("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1})}
 function ritmoStatus(v){if(v>=100)return{label:"NO RITMO",className:"ontrack",color:"#24c875"};if(v>=80)return{label:"ATENÇÃO",className:"attention",color:"#f2b94b"};return{label:"AÇÃO NECESSÁRIA",className:"risk",color:"#f15357"}}
 function ritmoRows(){
-  return S.m.map(r=>{
-    const meta=n(r.Meta_Mes),internalizado=n(r.Internalizado_Mes),baixadoHoje=n(r.Baixado_Hoje),considerado=internalizado+baixadoHoje,diasMes=n(r.Dias_Uteis_Mes),diasAtual=n(r.Dias_Uteis_Atual),diasRestantes=n(r.Dias_Uteis_Restantes)||Math.max(0,diasMes-diasAtual),esperado=diasMes>0?meta*diasAtual/diasMes:0,media=diasAtual>0?considerado/diasAtual:0,planejado=diasMes>0?meta/diasMes:0,ritmo=planejado>0?media/planejado*100:0,necessario=diasRestantes>0?Math.max(0,meta-considerado)/diasRestantes:Math.max(0,meta-considerado),previsao=considerado+media*diasRestantes,status=ritmoStatus(ritmo);
-    return{...r,meta,internalizado,baixadoHoje,considerado,diasMes,diasAtual,diasRestantes,esperado,media,planejado,ritmo,necessario,previsao,status,mes:norm(r.Mes_Atual)}
-  }).filter(r=>r.Agente).sort((a,b)=>a.ritmo-b.ritmo||b.necessario-a.necessario)
+  return S.m.map(r=>({
+    ...r,
+    ritmo:pct(r.Ritmo),
+    diasMes:n(r.Dias_Uteis_Mes),
+    diasAtual:n(r.Dias_Uteis_Atual),
+    diasRestantes:n(r.Dias_Uteis_Restantes)||Math.max(0,n(r.Dias_Uteis_Mes)-n(r.Dias_Uteis_Atual)),
+    mes:norm(r.Mes_Atual)
+  })).filter(r=>r.Agente).sort((a,b)=>b.ritmo-a.ritmo||norm(a.Agente).localeCompare(norm(b.Agente),"pt-BR"))
 }
-function ritmoResumo(rows){const first=rows[0]||{},noRitmo=rows.filter(r=>r.status.className==="ontrack").length,atencao=rows.filter(r=>r.status.className==="attention").length,risco=rows.filter(r=>r.status.className==="risk").length;return`<div class="rhythm-period"><span>${first.mes||"Mês não informado"}</span><b>${f1(first.diasAtual)} de ${f1(first.diasMes)} dias úteis transcorridos</b></div><div class="rhythm-kpis"><article><span>Dias úteis restantes</span><strong>${f1(first.diasRestantes)}</strong></article><article class="ontrack"><span>No ritmo</span><strong>${F.format(noRitmo)}</strong></article><article class="attention"><span>Em atenção</span><strong>${F.format(atencao)}</strong></article><article class="risk"><span>Em risco</span><strong>${F.format(risco)}</strong></article></div>`}
+function ritmoResumo(rows){
+  const first=rows[0]||{};
+  return`<div class="rhythm-period"><span>${first.mes||"Mês não informado"}</span><b>${f1(first.diasAtual)} de ${f1(first.diasMes)} dias úteis transcorridos</b></div><div class="rhythm-kpis rhythm-kpis-calendar"><article><span>Dias úteis do mês</span><strong>${f1(first.diasMes)}</strong></article><article><span>Dias úteis transcorridos</span><strong>${f1(first.diasAtual)}</strong></article><article><span>Dias úteis restantes</span><strong>${f1(first.diasRestantes)}</strong></article></div>`
+}
 function ritmoCards(rows){
   const pageSize=8,totalPages=Math.max(1,Math.ceil(rows.length/pageSize)),page=Math.min(S.rhythmPage,totalPages-1),start=page*pageSize,items=rows.slice(start,start+pageSize);
-  return`<div class="rhythm-page-head"><span>Prioridade por ritmo: menor índice primeiro</span><b>Página ${page+1}/${totalPages}</b></div><div class="rhythm-table-wrap"><table class="rhythm-table"><thead><tr><th>#</th><th>Terceira</th><th>Responsável</th><th>Ritmo</th><th>Considerado</th><th>Esperado hoje</th><th>Necessário por dia</th><th>Status</th></tr></thead><tbody>${items.map((r,i)=>`<tr class="${r.status.className}"><td class="rhythm-pos">${start+i+1}</td><td class="rhythm-agent"><strong>${norm(r.UF)} | ${norm(r.Agente)}</strong></td><td>${norm(r.Responsavel)||"Sem responsável"}</td><td class="rhythm-percent"><b style="color:${r.status.color}">${f1(r.ritmo)}%</b></td><td>${F.format(Math.round(r.considerado))}</td><td>${F.format(Math.round(r.esperado))}</td><td class="rhythm-needed">${f1(r.necessario)}</td><td><span class="rhythm-status">${r.status.label}</span></td></tr>`).join("")}</tbody></table></div>`
+  return`<div class="rhythm-page-head"><span>Maior ritmo primeiro</span><b>Página ${page+1}/${totalPages}</b></div><div class="rhythm-table-wrap"><table class="rhythm-table rhythm-table-simple"><thead><tr><th>Terceira</th><th>Responsável</th><th>Ritmo</th></tr></thead><tbody>${items.map(r=>{const cor=metaColor(r.ritmo);return`<tr><td class="rhythm-agent"><strong>${norm(r.UF)} | ${norm(r.Agente)}</strong></td><td>${norm(r.Responsavel)||"Sem responsável"}</td><td class="rhythm-percent"><div class="rhythm-percent-value"><b style="color:${cor}">${f1(r.ritmo)}%</b></div><span class="rhythm-percent-track"><i style="width:${Math.min(Math.max(r.ritmo,0),100)}%;background:${cor}"></i></span></td></tr>`}).join("")}</tbody></table></div>`
 }
 function ritmoView(rows){if(!rows.length)return`<div class="forecast-empty"><strong>Dados de ritmo indisponíveis</strong><span>Inclua os campos de dias úteis em metas_terceiras.csv</span></div>`;const valid=rows.some(r=>r.diasMes>0);if(!valid)return`<div class="forecast-empty"><strong>Calendário operacional não informado</strong><span>Preencha Mes_Atual, Dias_Uteis_Mes, Dias_Uteis_Atual e Dias_Uteis_Restantes</span></div>`;return`<div class="rhythm-view">${ritmoResumo(rows)}${ritmoCards(rows)}</div>`}
 

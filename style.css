@@ -863,3 +863,77 @@ tr.risk .rhythm-status{color:#ff8588;background:rgba(241,83,87,.14)}
   .rhythm-table tbody tr{height:auto!important}
   .rhythm-table th,.rhythm-table td{padding:9px 8px!important}
 }
+
+
+/* Ajuste 29: restaura barra compacta de preenchimento na coluna Ritmo */
+.rhythm-percent{
+  vertical-align:middle!important;
+}
+.rhythm-percent-value{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  height:14px!important;
+}
+.rhythm-percent-value b{
+  display:block!important;
+  font-size:10px!important;
+  line-height:1!important;
+  text-align:center!important;
+}
+.rhythm-percent .rhythm-percent-track{
+  display:block!important;
+  width:100%!important;
+  height:4px!important;
+  margin:3px 0 0!important;
+  overflow:hidden!important;
+  border-radius:999px!important;
+  background:#06111e!important;
+}
+.rhythm-percent .rhythm-percent-track i{
+  display:block!important;
+  height:100%!important;
+  min-width:0!important;
+  border-radius:999px!important;
+}
+
+
+/* Ajuste 30: visão Ritmo simplificada */
+.rhythm-view{
+  grid-template-rows:20px 66px 20px minmax(0,1fr)!important;
+}
+.rhythm-kpis-calendar{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+}
+.rhythm-kpis-calendar article{
+  border-left-color:#347fe4!important;
+}
+.rhythm-table-simple th:nth-child(1),
+.rhythm-table-simple td:nth-child(1){
+  width:48%!important;
+  text-align:left!important;
+}
+.rhythm-table-simple th:nth-child(2),
+.rhythm-table-simple td:nth-child(2){
+  width:24%!important;
+  text-align:left!important;
+}
+.rhythm-table-simple th:nth-child(3),
+.rhythm-table-simple td:nth-child(3){
+  width:28%!important;
+  text-align:center!important;
+}
+.rhythm-table-simple tbody tr{
+  border-left:0!important;
+}
+.rhythm-table-simple .rhythm-agent strong{
+  font-size:11px!important;
+}
+.rhythm-table-simple .rhythm-percent-track{
+  width:78%!important;
+  margin:4px auto 0!important;
+}
+@media(max-width:900px){
+  .rhythm-kpis-calendar{grid-template-columns:1fr!important}
+  .rhythm-table-simple{min-width:620px!important}
+}
