@@ -1039,3 +1039,45 @@ tr.risk .rhythm-status{color:#ff8588;background:rgba(241,83,87,.14)}
   .rhythm-table-simple th{font-size:11px!important}
   .rhythm-table-simple td{font-size:12px!important}
 }
+
+
+/* Ajuste 32: paginação manual em Metas Terceiras */
+.meta-pagination{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.meta-pagination b{
+  min-width:72px;
+  text-align:center;
+  color:#dcecff;
+  font-size:11px;
+}
+.meta-pagination button{
+  width:28px;
+  height:26px;
+  display:grid;
+  place-items:center;
+  padding:0;
+  border:1px solid #3c83cf;
+  border-radius:7px;
+  background:#183154;
+  color:#fff;
+  font-size:22px;
+  font-weight:900;
+  line-height:1;
+  cursor:pointer;
+}
+.meta-pagination button:hover:not(:disabled){
+  background:#245087;
+  border-color:#62b6ff;
+}
+.meta-pagination button:disabled{
+  opacity:.3;
+  cursor:default;
+}
+@media(max-width:900px){
+  .meta-page-head{gap:8px;flex-wrap:wrap}
+  .meta-pagination{margin-left:auto}
+  .meta-pagination button{width:34px;height:32px;font-size:25px}
+}
