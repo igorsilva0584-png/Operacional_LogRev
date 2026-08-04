@@ -819,3 +819,47 @@ tr.risk .rhythm-status{color:#ff8588;background:rgba(241,83,87,.14)}
   .rhythm-table{min-width:900px;height:auto}
   .rhythm-table th,.rhythm-table td{padding:9px 8px}
 }
+
+
+/* Ajuste 28: tabela Ritmo do Mês contida acima da faixa Destaques */
+.rhythm-container{
+  height:465px!important;
+  min-height:0!important;
+  overflow:hidden!important;
+}
+.rhythm-view{
+  height:100%!important;
+  min-height:0!important;
+  grid-template-rows:20px 66px 20px minmax(0,1fr)!important;
+  gap:6px!important;
+}
+.rhythm-period{font-size:9px!important}
+.rhythm-kpis article{padding:7px 12px!important}
+.rhythm-kpis span{font-size:9px!important}
+.rhythm-kpis strong{font-size:22px!important;margin-top:1px!important}
+.rhythm-page-head{font-size:8px!important}
+.rhythm-table-wrap{
+  height:100%!important;
+  min-height:0!important;
+  overflow:hidden!important;
+}
+.rhythm-table{
+  height:100%!important;
+  line-height:1!important;
+}
+.rhythm-table thead tr{height:28px!important}
+.rhythm-table tbody tr{height:calc((100% - 28px)/8)!important}
+.rhythm-table th{height:28px!important;padding:4px 8px!important}
+.rhythm-table td{padding:4px 8px!important;line-height:1!important}
+.rhythm-percent b{display:block!important;text-align:center!important;font-size:10px!important}
+.rhythm-percent span{display:none!important}
+.rhythm-status{padding:3px 7px!important;font-size:7px!important}
+
+@media(max-width:900px){
+  .rhythm-container{height:auto!important;overflow:visible!important}
+  .rhythm-view{height:auto!important;grid-template-rows:auto auto auto auto!important}
+  .rhythm-table-wrap{height:auto!important;overflow-x:auto!important}
+  .rhythm-table{height:auto!important}
+  .rhythm-table tbody tr{height:auto!important}
+  .rhythm-table th,.rhythm-table td{padding:9px 8px!important}
+}
