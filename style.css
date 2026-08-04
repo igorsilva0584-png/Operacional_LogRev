@@ -726,3 +726,96 @@ img{max-width:100%}
   .rhythm-title .owner{grid-column:auto}
   .rhythm-row{grid-template-columns:26px minmax(0,1fr)}
 }
+
+
+/* Ajuste 25: ritmo considera internalizado no mês + baixado hoje */
+.rhythm-details span:nth-child(1) b{color:#62e6a1}
+.rhythm-details span:nth-child(2) b{color:#57c8ff}
+.rhythm-details span:nth-child(3) b{color:#ffffff}
+.rhythm-details span:nth-child(4) b{color:#7fcaff}
+.rhythm-details span:nth-child(6) b{color:#ffd166}
+.rhythm-details span:nth-child(7) b{color:#62e6a1}
+@media(min-width:901px){
+  .rhythm-details{gap:7px;font-size:8px}
+  .rhythm-details b{font-size:8px}
+}
+
+
+/* Ajuste 26: visão Ritmo do Mês em tabela operacional */
+.rhythm-view{grid-template-rows:24px 74px 24px minmax(0,1fr)}
+.rhythm-table-wrap{
+  min-height:0;
+  overflow:hidden;
+  border:1px solid #294866;
+  border-radius:11px;
+  background:#0b1828;
+}
+.rhythm-table{
+  width:100%;
+  height:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+  font-size:10px;
+}
+.rhythm-table thead{background:#102740}
+.rhythm-table th{
+  height:32px;
+  padding:7px 8px;
+  color:#91a8c4;
+  font-size:9px;
+  font-weight:800;
+  text-align:left;
+  text-transform:uppercase;
+  letter-spacing:.035em;
+  white-space:nowrap;
+  border-bottom:1px solid #31516e;
+}
+.rhythm-table td{
+  padding:7px 8px;
+  color:#dce8f5;
+  border-bottom:1px solid rgba(49,81,110,.5);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.rhythm-table tbody tr:last-child td{border-bottom:0}
+.rhythm-table tbody tr{background:#0d1c2e}
+.rhythm-table tbody tr:nth-child(even){background:#102136}
+.rhythm-table tbody tr.ontrack{border-left:4px solid #24c875}
+.rhythm-table tbody tr.attention{border-left:4px solid #f2b94b}
+.rhythm-table tbody tr.risk{border-left:4px solid #f15357}
+.rhythm-table th:nth-child(1),.rhythm-table td:nth-child(1){width:4%;text-align:center}
+.rhythm-table th:nth-child(2),.rhythm-table td:nth-child(2){width:20%}
+.rhythm-table th:nth-child(3),.rhythm-table td:nth-child(3){width:11%}
+.rhythm-table th:nth-child(4),.rhythm-table td:nth-child(4){width:13%}
+.rhythm-table th:nth-child(5),.rhythm-table td:nth-child(5){width:10%;text-align:right}
+.rhythm-table th:nth-child(6),.rhythm-table td:nth-child(6){width:12%;text-align:right}
+.rhythm-table th:nth-child(7),.rhythm-table td:nth-child(7){width:13%;text-align:right}
+.rhythm-table th:nth-child(8),.rhythm-table td:nth-child(8){width:17%;text-align:center}
+.rhythm-pos{color:#7fcaff!important;font-weight:900}
+.rhythm-agent strong{color:#fff;font-size:10px}
+.rhythm-percent b{display:block;color:#fff;text-align:right;font-size:10px}
+.rhythm-percent span{display:block;height:4px;margin-top:3px;overflow:hidden;border-radius:999px;background:#06111e}
+.rhythm-percent i{display:block;height:100%;border-radius:inherit}
+.rhythm-needed{color:#ffd166!important;font-weight:900}
+.rhythm-status{
+  display:inline-block;
+  max-width:100%;
+  padding:4px 8px;
+  border-radius:999px;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.035em;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+tr.ontrack .rhythm-status{color:#62e6a1;background:rgba(36,200,117,.14)}
+tr.attention .rhythm-status{color:#ffd166;background:rgba(242,185,75,.14)}
+tr.risk .rhythm-status{color:#ff8588;background:rgba(241,83,87,.14)}
+
+@media(max-width:900px){
+  .rhythm-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .rhythm-table{min-width:900px;height:auto}
+  .rhythm-table th,.rhythm-table td{padding:9px 8px}
+}
