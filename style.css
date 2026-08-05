@@ -1081,3 +1081,20 @@ tr.risk .rhythm-status{color:#ff8588;background:rgba(241,83,87,.14)}
   .meta-pagination{margin-left:auto}
   .meta-pagination button{width:34px;height:32px;font-size:25px}
 }
+
+/* Ajuste 35: ordem das colunas em Ritmo do Mes */
+.rhythm-table-simple th:nth-child(1),
+.rhythm-table-simple td:nth-child(1){
+  width:48%!important;
+  text-align:left!important;
+}
+.rhythm-table-simple th:nth-child(2),
+.rhythm-table-simple td:nth-child(2){
+  width:28%!important;
+  text-align:center!important;
+}
+.rhythm-table-simple th:nth-child(3),
+.rhythm-table-simple td:nth-child(3){
+  width:24%!important;
+  text-align:left!important;
+}
