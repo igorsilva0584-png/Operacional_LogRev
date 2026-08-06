@@ -1,4 +1,4 @@
-Mes_Ano;Data_Internalizacao;UF;Armazem_Agrupado_Origem;Tipo_Armazem_Origem;Armazem_Origem;Armazem_Destino;Tipo_Armazem_Destino;Tipo_Desconexao;Tecnologia;Volume
+﻿Mes_Ano;Data_Internalizacao;UF;Armazem_Agrupado_Origem;Tipo_Armazem_Origem;Armazem_Origem;Armazem_Destino;Tipo_Armazem_Destino;Tipo_Desconexao;Tecnologia;Volume
 AGO/2026;06/08/2026;CE;REPARO ELETROS;TERCEIROS COLETA;EMP FLA REV REPARO ELETROS JADSON ITALO;CDL FORTALEZA - LABORATORIO;ALARES LABORATORIO;voluntaria;WIFI 5;1
 AGO/2026;06/08/2026;SP-SOC;ALARES LOJA;ALARES LOJA;DEVOLUCAO EQUIP LOJA SOROCABA;CDL ITUPEVA - LABORATORIO;ALARES CDL;voluntaria;WIFI 6;1
 AGO/2026;05/08/2026;BA;ALARES LOJA;ALARES LOJA;DEVOLUCAO EQUIP LOJA EUNAPOLIS;CDL FORTALEZA - LABORATORIO;ALARES LABORATORIO;voluntaria;WIFI 5;1
