@@ -372,8 +372,11 @@ Verifique:
 5. workflow do GitHub Pages;
 6. mensagem no Teams.
 
+
 ---
 
 ## 15. Versão consolidada
 
 Esta documentação consolida as funcionalidades disponíveis até o ajuste de inclusão das setas manuais em **Metas Terceiras**, mantendo também as setas em **Ritmo do Mês** e a velocidade reduzida do grupo **PRIORIDADE**.
+
+Última tentativa de publicação: 06/08/2026
